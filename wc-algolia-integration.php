@@ -6,7 +6,7 @@
  * Description:     Syncs WooCommerce products with an Algolia index.
  * Author:          Frederic Barry
  * Author URI:      https://fredericbarry.com
- * Version:         1.0.0
+ * Version:         1.0.1
  */
 
 namespace AlgoliaForWooCommerce;
