@@ -1,6 +1,7 @@
 <?php
 
-namespace AlgoliaForWooCommerce\CLI;
+namespace FredericBarry\WordPress\Plugin\AlgoliaWooCommerce\CLI;
+use FredericBarry\WordPress\Plugin\AlgoliaWooCommerce\product_to_index;
 
 if (!defined('ABSPATH')) {
     return;
@@ -36,10 +37,10 @@ class Algolia_Command {
 
             foreach ($posts->posts as $post) {
                 if (!empty($assoc_args['verbose'])) {
-                    \WP_CLI::line('Serializing ['.$post->post_title.']');
+                    \WP_CLI::log('Serializing ['.$post->post_title.']');
                 }
 
-                $record = (array) \apply_filters('post_to_record', $post);
+                $record = (array) \apply_filters('product_to_index', $post);
 
                 if (!isset($record['objectID'])) {
                     $record['objectID'] = implode('-', [$post->post_type, $post->ID]);
@@ -50,7 +51,7 @@ class Algolia_Command {
             }
 
             if (!empty($assoc_args['verbose'])) {
-                \WP_CLI::line('Sending batch');
+                \WP_CLI::log('Sending batch');
             }
 
             $index->saveObjects($records);
@@ -63,4 +64,4 @@ class Algolia_Command {
     }
 }
 
-\WP_CLI::add_command('algolia', 'AlgoliaForWooCommerce\CLI\Algolia_Command');
+\WP_CLI::add_command('algolia', __NAMESPACE__ . '\Algolia_Command');
