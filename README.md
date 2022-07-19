@@ -16,5 +16,5 @@ define( 'ALGOLIA_INDEX_NAME', '' );
 Run the following command from the plugin's root directory:
 
 ```shell
-wp algolia reindex
+wp algolia reindex --verbose
 ```
