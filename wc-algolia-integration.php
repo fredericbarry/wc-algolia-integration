@@ -9,7 +9,7 @@
  * Version:         1.0.1
  */
 
-namespace AlgoliaForWooCommerce;
+namespace FredericBarry\WordPress\Plugin\AlgoliaWooCommerce;
 
 if (!defined('ABSPATH')) {
     return;
@@ -21,7 +21,7 @@ require_once __DIR__ . '/wp-cli.php';
 global $algolia;
 $algolia = \Algolia\AlgoliaSearch\SearchClient::create(ALGOLIA_APPLICATION_ID, ALGOLIA_ADMIN_API_KEY);
 
-function product_to_index(WP_Post $post) {
+function product_to_index(\WP_Post $post) {
     return [
         'objectID' => implode('-', [$post->post_type, $post->ID]),
         'name' => $post->post_title,
@@ -32,7 +32,7 @@ function product_to_index(WP_Post $post) {
     ];
 }
 
-function update_post($id, WP_Post $post, $update) {
+function update_post($id, \WP_Post $post, $update) {
     if (\wp_is_post_revision($id) || \wp_is_post_autosave($id)) {
         return $post;
     }
@@ -56,5 +56,5 @@ function update_post($id, WP_Post $post, $update) {
     return $post;
 }
 
-\add_filter('product_to_index', 'product_to_index');
-\add_action('save_post', 'update_post', 10, 3);
+\add_filter('product_to_index', __NAMESPACE__ . '\product_to_index');
+\add_action('save_post', __NAMESPACE__ . '\update_post', 10, 3);
