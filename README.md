@@ -18,3 +18,9 @@ Run the following command from the plugin's root directory:
 ```shell
 wp algolia reindex --verbose
 ```
+
+## Changelog
+
+### v1.0.3
+
+- Fix bug where all post types were being indexed
