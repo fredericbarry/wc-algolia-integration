@@ -21,6 +21,10 @@ wp algolia reindex --verbose
 
 ## Changelog
 
+### v1.0.4
+
+- Fix bug where autosaves were being indexed
+
 ### v1.0.3
 
 - Fix bug where all post types were being indexed
