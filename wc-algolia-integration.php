@@ -6,7 +6,7 @@
  * Description:     Syncs WooCommerce products with an Algolia index.
  * Author:          Frederic Barry
  * Author URI:      https://fredericbarry.com
- * Version:         1.0.4
+ * Version:         1.0.5
  */
 
 namespace FredericBarry\WordPress\Plugin\AlgoliaWooCommerce;
@@ -33,13 +33,17 @@ function product_to_index(\WP_Post $post)
     ];
 }
 
-function update_product_post($post_id, \WP_Post $post)
+function update_product_post($post_id, \WP_Post $post, $update)
 {
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
         return;
     }
 
     if (\wp_is_post_autosave($post_id) || \wp_is_post_revision($post_id)) {
+        return;
+    }
+
+    if ($post->post_status != 'publish' && !$update) {
         return;
     }
 
@@ -53,12 +57,12 @@ function update_product_post($post_id, \WP_Post $post)
 
     $index = $algolia->initIndex(ALGOLIA_INDEX_NAME);
 
-    if ('trash' == $post->post_status) {
-        $index->deleteObject($record['objectID']);
-    } else {
+    if ($post->post_status == 'publish') {
         $index->saveObject($record);
+    } else {
+        $index->deleteObject($record['objectID']);
     }
 }
 
 \add_filter('product_to_index', __NAMESPACE__ . '\product_to_index');
-\add_action('save_post_product', __NAMESPACE__ . '\update_product_post', 10, 2);
+\add_action('save_post_product', __NAMESPACE__ . '\update_product_post', 10, 3);

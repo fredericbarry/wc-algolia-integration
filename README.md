@@ -21,10 +21,14 @@ wp algolia reindex --verbose
 
 ## Changelog
 
+### v1.0.5
+
+- Fixed bug where private products were being indexed
+
 ### v1.0.4
 
-- Fix bug where autosaves were being indexed
+- Fixed bug where autosaves were being indexed
 
 ### v1.0.3
 
-- Fix bug where all post types were being indexed
+- Fixed bug where all post types were being indexed
