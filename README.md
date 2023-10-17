@@ -1,5 +1,7 @@
 # Algolia Integration for WooCommerce
 
+Based on the WordPress integration with Algolia [documentation](https://www.algolia.com/doc/integration/wordpress/getting-started/quick-start/?client=php)
+
 ## Installation
 
 - Run the `composer install` command from the plugin's root directory.

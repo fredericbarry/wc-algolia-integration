@@ -2,11 +2,11 @@
 
 /**
  * Plugin Name:     Algolia Integration for WooCommerce
- * Plugin URI:      https://www.algolia.com/doc/integration/wordpress/getting-started/quick-start/?client=php
+ * Plugin URI:      https://github.com/fredericbarry/wc-algolia-integration
  * Description:     Syncs WooCommerce products with an Algolia index.
  * Author:          Frederic Barry
  * Author URI:      https://fredericbarry.com
- * Version:         1.0.5
+ * Version:         1.0.6
  */
 
 namespace FredericBarry\WordPress\Plugin\AlgoliaWooCommerce;
