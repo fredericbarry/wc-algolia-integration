@@ -1,7 +1,6 @@
 <?php
-
 /**
- * Plugin Name:     Algolia Integration for WooCommerce
+ * Plugin Name:     Algolia integration for WooCommerce
  * Plugin URI:      https://github.com/fredericbarry/wc-algolia-integration
  * Description:     Syncs WooCommerce products with an Algolia index.
  * Author:          Frederic Barry

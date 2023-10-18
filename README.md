@@ -1,4 +1,4 @@
-# Algolia Integration for WooCommerce
+# Algolia integration for WooCommerce
 
 Based on the WordPress integration with Algolia [documentation](https://www.algolia.com/doc/integration/wordpress/getting-started/quick-start/?client=php)
 
@@ -13,6 +13,12 @@ define( 'ALGOLIA_ADMIN_API_KEY', '' );
 define( 'ALGOLIA_INDEX_NAME', '' );
 ```
 
+## Development
+
+- Increment the version number in the plugin header
+- Create and push a tag corresponding to the version number
+- Create a release and document the changes
+
 ## Reindex all products using WP-CLI
 
 Run the following command from the plugin's root directory:
@@ -20,17 +26,3 @@ Run the following command from the plugin's root directory:
 ```shell
 wp algolia reindex --verbose
 ```
-
-## Changelog
-
-### v1.0.5
-
-- Fixed bug where private products were being indexed
-
-### v1.0.4
-
-- Fixed bug where autosaves were being indexed
-
-### v1.0.3
-
-- Fixed bug where all post types were being indexed
